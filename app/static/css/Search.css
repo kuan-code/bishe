@@ -1,0 +1,49 @@
+ul li{
+    list-style-type: none;
+}
+.box{width:100%}
+.box li{ float:left; cursor: pointer}
+.box li h4{
+    font-family: 微软雅黑;
+    font-size: 15px;
+    margin: 30px;
+}
+
+#content{
+    color: rgb(161,47,47);
+    font-weight:800;
+}
+.table thead tr th, .table tbody tr td {
+    vertical-align: middle;
+    text-align: left;
+    white-space: nowrap;/*规定段落的文本不进行换行*/
+    overflow: hidden;/*超出隐藏*/
+    text-overflow: ellipsis;/*隐藏的字符用省略号表示  IE*/
+    -moz-text-overflow: ellipsis;/*隐藏的字符用省略号表示  火狐*/
+}
+
+/*#about-us{*/
+    /*background: url("../img_pc/tree.png") no-repeat; background-size:100% 100%; background-attachment:fixed;;*/
+/*}*/
+table {
+    table-layout:fixed;/*table的内部布局固定大小，才可以通过td的width控制宽度*/
+    word-wrap:break-word; /*允许长单词换到下一行*/
+}
+#content td:hover{
+    background-color: #d8d6d6;
+}
+.swal-modal{
+        text-align: left;
+        width: 500px;
+        height:500px;
+    overflow-y: auto;
+    scroll-padding-top: 0;
+
+
+}
+::-webkit-scrollbar-thumb
+{
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.2);
+	background-color: rgba(255,255,255,.75)
+}

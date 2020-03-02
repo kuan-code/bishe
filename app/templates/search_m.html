@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>松毛虫肠道微生物</title>
+<!-- for-mobile-apps -->
+<script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts.js"></script>
+<script src="https://cdn.bootcss.com/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+
+	<!-- css files -->
+    <link href="{{ url_for('static',filename='css/css_slider.css') }}" rel="stylesheet"><!-- Slider css -->
+    <link href="{{ url_for('static',filename='css/bootstrap.css') }}" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+    <link href="{{ url_for('static',filename='css/style_m.css') }}" rel='stylesheet' type='text/css' /><!-- custom css -->
+    <link href="{{ url_for('static',filename='css/font-awesome.min.css') }}" rel="stylesheet"><!-- fontawesome css -->
+	<!-- //css files -->
+
+	<!-- google fonts -->
+	<link href="http://fonts.googleapis.com/css?family=Niramit:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext,thai,vietnamese" rel="stylesheet">
+	<!-- //google fonts -->
+
+</head>
+<body>
+
+
+<!-- header -->
+<header>
+	<div class="container">
+		<!-- nav -->
+		<nav class="py-3 d-lg-flex">
+			<div id="logo">
+				<h1> <a href="{{ url_for('Mobile.index_m') }}"><span><img style="width:30%;height: 30%" src="{{ url_for('static',filename='img/虫子图标.png') }}" alt=""></span> DKIMDB </a></h1>
+			</div>
+			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
+			<input type="checkbox" id="drop" />
+			<ul class="menu ml-auto mt-1">
+				<li class="active"><a href="{{ url_for('Mobile.index_m') }}">Home</a></li>
+				<li class=""><a href="{{ url_for('Mobile.search_m') }}">Search</a></li>
+				<li class=""><a href="{{ url_for('Mobile.statistics_m') }}">Statistics</a></li>
+			</ul>
+		</nav>
+		<!-- //nav -->
+	</div>
+</header>
+<!-- //header -->
+
+<!-- inner-banner -->
+<section class="inner-banner" id="home">
+	<div class="inner-layer">
+		<div class="container">
+		</div>
+	</div>
+</section>
+<!-- //inner-banner -->
+
+<!-- breadcrumb -->
+<div class="breadcrumb-w3pvt">
+	<div class="container">
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="index.html">Home</a>
+			</li>
+			<li class="breadcrumb-item" aria-current="page">SEARCH</li>
+		</ol>
+	</nav>
+	</div>
+</div>
+<!-- //breadcrumb -->
+<br>
+<section class="chose_list">
+	<div style="background-color: #e5bb50c3;">
+		<label class="col-sm-2 control-label">选择虫龄</label>
+		<select id="worm_year" class="form-control" onchange="M_list()" style="width: 60%">
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+			<option>5</option>
+			<option>6</option>
+			<option>7</option>
+		</select></div>
+</section>
+<hr class="simple" color="#6f5499" />
+<!-- advantages and details -->
+<section class="worm_list">
+	<table style="width: 100%" class="table table-hover">
+		<tbody id="m_table">
+
+		</tbody>
+	</table>
+</section>
+<hr color="#6f5499" />
+<section class="worm_chart">
+<div id="chart_container" style="height: 80rem"></div>
+
+</section>
+
+<!-- move top -->
+<div class="move-top text-right">
+	<a href="#home" class="move-top"> 
+		<span class="fa fa-angle-up  mb-3" aria-hidden="true"></span>
+	</a>
+</div>
+<!-- move top -->
+
+</body>
+<script src="{{url_for('static',filename='js/search_m.js')}}"></script>
+</html>

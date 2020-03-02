@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>DKIMDB</title>
+     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts.js"></script>
+        <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.bootcss.com/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <link href="{{url_for('static',filename='css_pc/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='css_pc/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='css_pc/pe-icons.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='css_pc/prettyPhoto.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='css_pc/animate.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='css_pc/style.css')}}" rel="stylesheet">
+    <script src="{{url_for('static',filename='js_pc/jquery.js')}}"></script>
+    <!--[if lt IE 9]>
+    <script src="{{url_for('static',filename='js_pc/html5shiv.js')}}"></script>
+    <script src="{{url_for('static',filename='js_pc/respond.min.js')}}"></script>
+
+
+    <![endif]-->
+
+
+    <link rel="shortcut icon" href="{{url_for('static',filename='img_pc/ico/favicon.ico')}}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{url_for('static',filename='img_pc/ico/apple-touch-icon-144x144.png')}}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{url_for('static',filename='img_pc/ico/apple-touch-icon-114x114.png')}}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{url_for('static',filename='img_pc/ico/apple-touch-icon-72x72.png')}}">
+    <link rel="apple-touch-icon" href="{{url_for('static',filename='img_pc/ico/apple-touch-icon-57x57.png')}}">
+
+    <script type="text/javascript">
+    jQuery(document).ready(function($){
+	'use strict';
+      	jQuery('body').backstretch([
+	        "../static/img_pc/bg/songshu.jpg",
+	        "../static/img_pc/bg/bg3.jpg",
+            "../static/img_pc/bg/bg1.jpg"
+	    ], {duration: 5000, fade: 500, centeredY: true });
+
+
+    });
+    </script>
+</head><!--/head-->
+<body>
+<div id="preloader"></div>
+    <header class="navbar navbar-inverse navbar-fixed-top opaqued" role="banner">
+    <div id="search-wrapper">
+        <div class="container">
+            <input id="search-box" placeholder="Search">
+        </div>
+    </div>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="{{ url_for('Computer.index') }}"><h1>
+                    <img  style="float: left;margin-top: -8px;;width: 50px;height: 46px" src="{{ url_for('static',filename='img/虫子图标.png') }}" alt="">
+                    DKIMDB</h1></a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li> <a class="page-scroll" href="{{ url_for('Computer.index') }}">Home</a> </li>
+          <li> <a class="page-scroll" href="{{ url_for('Computer.search') }}">SEARCH</a> </li>
+          <li> <a class="page-scroll" href="{{ url_for('Computer.statistics') }}">STATISTICS</a> </li>
+          <li> <a class="page-scroll" href="{{ url_for('Computer.download') }}">DOWNLOAD</a> </li>
+          <li> <a class="page-scroll" href="#testimonials">PUBLICATIONS</a> </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </header><!--/header-->
+
+    <section id="main-slider" class="no-margin">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="carousel-content center centered">
+                                    <h2 class="boxed animation animated-item-1 fade-down">M.O.I of DENDROLIMUS</h2><br>
+                                    <p class="boxed animation animated-item-2 fade-up">关于思茅松毛虫肠道微生物种类关系分析.</p>
+                                    <br>
+                                    <a class="btn btn-md animation bounce-in" href="#services">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+    </section><!--/#main-slider-->
+
+
+
+    <div id="content-wrapper">
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=OjUDbWtmUapURcM9ERHxQfpsevi5GTBt"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+
+  <section id="services" class="white">
+            <div class="container" style="width: 98%">
+            <div id="map_fenbu" style="height: 800px"></div>
+            <script type="text/javascript">
+var dom = document.getElementById("map_fenbu");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+var data = [{'name': '江苏', 'value': 2, 'fenbu': ['马尾松毛虫', '赤松毛虫']}, {'name': '浙江', 'value': 5, 'fenbu': ['马尾松毛虫', '思茅松毛虫', '云南松毛虫', '天目松毛虫', '黄山松毛虫']}, {'name': '安徽', 'value': 3, 'fenbu': ['马尾松毛虫', '思茅松毛虫', '黄山松毛虫']}, {'name': '福建', 'value': 7, 'fenbu': ['马尾松毛虫', '室纹松毛虫', '高山松毛虫', '思茅松毛虫', '云南松毛虫', '天目松毛虫', '黄山松毛虫']}, {'name': '江西', 'value': 4, 'fenbu': ['马尾松毛虫', '思茅松毛虫', '云南松毛虫', '天目松毛虫']}, {'name': '河南', 'value': 5, 'fenbu': ['马尾松毛虫', '油松毛虫', '思茅松毛虫', '明纹柏松毛虫', '赤松毛虫']}, {'name': '湖北', 'value': 3, 'fenbu': ['马尾松毛虫', '思茅松毛虫', '云南松毛虫']}, {'name': '湖南', 'value': 4, 'fenbu': ['马尾松毛虫', '高山松毛虫', '思茅松毛虫', '云南松毛虫']}, {'name': '广东', 'value': 2, 'fenbu': ['马尾松毛虫', '思茅松毛虫']}, {'name': '广西', 'value': 4, 'fenbu': ['马尾松毛虫', '高山松毛虫', '思茅松毛虫', '文山松毛虫']}, {'name': '海南', 'value': 3, 'fenbu': ['马尾松毛虫', '云南松毛虫', '海南松毛虫']}, {'name': '四川', 'value': 8, 'fenbu': ['马尾松毛虫', '油松毛虫', '高山松毛虫', '思茅松毛虫', '云南松毛虫', '双波松毛虫', '丽江松毛虫', '德昌松毛虫']}, {'name': '贵州', 'value': 3, 'fenbu': ['马尾松毛虫', '思茅松毛虫', '云南松毛虫']}, {'name': '云南', 'value': 11, 'fenbu': ['马尾松毛虫', '火地松毛虫', '高山松毛虫', '思茅松毛虫', '云南松毛虫', '双波松毛虫', '油杉松毛虫', '文山松毛虫', '丽江松毛虫', '云龙松毛虫', '德昌松毛虫']}, {'name': '陕西', 'value': 11, 'fenbu': ['马尾松毛虫', '油松毛虫', '旬阳松毛虫', '火地松毛虫', '宁陕松毛虫', '室纹松毛虫', '秦岭松毛虫', '明纹柏松毛虫', '华山松毛虫', '云南松毛虫', '黄山松毛虫']}, {'name': '台湾', 'value': 4, 'fenbu': ['马尾松毛虫', '阿里山松毛虫', '思茅松毛虫', '花缘松毛虫']}, {'name': '越南', 'value': 4, 'fenbu': ['马尾松毛虫', '高山松毛虫', '思茅松毛虫', '云南松毛虫']}, {'name': '河北', 'value': 4, 'fenbu': ['油松毛虫', '落叶松毛虫', '明纹柏松毛虫', '赤松毛虫']}, {'name': '山西', 'value': 2, 'fenbu': ['油松毛虫', '明纹柏松毛虫']}, {'name': '辽宁', 'value': 3, 'fenbu': ['油松毛虫', '落叶松毛虫', '赤松毛虫']}, {'name': '山东', 'value': 5, 'fenbu': ['油松毛虫', '落叶松毛虫', '明纹柏松毛虫', '赤松毛虫', '侧柏松毛虫']}, {'name': '甘肃', 'value': 5, 'fenbu': ['油松毛虫', '旬阳松毛虫', '高山松毛虫', '思茅松毛虫', '德昌松毛虫']}, {'name': '西藏', 'value': 5, 'fenbu': ['火地松毛虫', '喜马拉雅松毛虫', '高山松毛虫', '双波松毛虫', '丽江松毛虫']}, {'name': '尼泊尔', 'value': 1, 'fenbu': ['喜马拉雅松毛虫']}, {'name': '北京', 'value': 1, 'fenbu': ['落叶松毛虫']}, {'name': '内蒙古', 'value': 2, 'fenbu': ['落叶松毛虫', '明纹柏松毛虫']}, {'name': '吉林', 'value': 1, 'fenbu': ['落叶松毛虫']}, {'name': '黑龙江', 'value': 1, 'fenbu': ['落叶松毛虫']}, {'name': '新疆', 'value': 1, 'fenbu': ['落叶松毛虫']}, {'name': '俄罗斯', 'value': 1, 'fenbu': ['落叶松毛虫']}, {'name': '朝鲜', 'value': 2, 'fenbu': ['落叶松毛虫', '赤松毛虫']}, {'name': '日本', 'value': 2, 'fenbu': ['落叶松毛虫', '赤松毛虫']}, {'name': '印度', 'value': 1, 'fenbu': ['云南松毛虫']}, {'name': '泰国', 'value': 1, 'fenbu': ['云南松毛虫']}, {'name': '锡金', 'value': 1, 'fenbu': ['双波松毛虫']}, {'name': '青海', 'value': 1, 'fenbu': ['玉树松毛虫']}];
+var geoCoordMap = {
+        '越南':[108.03 , 13.33],
+        '泰国':[100.03 , 15.33],
+        '日本':[139.49,36.38],
+        '尼泊尔':[85.19,27.43],
+        '印度':[76.14,20.43],
+        '俄罗斯':[105.32,61.52401],
+         '新疆': [86.61 , 40.79],
+         '西藏':[89.13 , 30.66],
+         '黑龙江':[128.34 , 47.05],
+         '吉林':[126.32 , 43.38],
+         '辽宁':[123.42 , 41.29],
+         '内蒙古':[112.17 , 42.81],
+         '北京':[116.40 , 40.40 ],
+         '宁夏':[106.27 , 36.76],
+         '山西':[111.95,37.65],
+         '河北':[115.21 , 38.44],
+         '天津':[117.04 , 39.52],
+         '青海':[97.07 , 35.62],
+         '甘肃':[103.82 , 36.05],
+         '山东':[118.01 , 36.37],
+         '陕西':[108.94 , 34.46],
+         '河南':[113.46 , 34.25],
+         '安徽':[117.28 , 31.86],
+         '江苏':[120.26 , 32.54],
+         '上海':[121.46 , 31.28],
+         '四川':[103.36 , 30.65],
+         '湖北':[112.29 , 30.98],
+         '浙江':[120.15 , 29.28],
+         '重庆':[107.51 , 29.63],
+         '湖南':[112.08 , 27.79],
+         '江西':[115.89 , 27.97],
+         '贵州':[106.91 , 26.67],
+         '福建':[118.31 , 26.07],
+         '云南':[101.71 , 24.84],
+         '台湾':[121.01 , 23.54],
+         '广西':[108.67 , 23.68],
+         '广东':[113.98 , 22.82],
+         '海南':[110.03 , 19.33],
+         '澳门':[113.54 , 22.19],
+         '香港':[114.17 , 22.32]
+      };
+var convertData = function (data) {
+    var res = [];
+    for (var i = 0; i < data.length; i++) {
+        var geoCoord = geoCoordMap[data[i].name];
+        if (geoCoord) {
+            res.push({
+                name: data[i].name,
+                value: geoCoord.concat(data[i].value),
+                fenBuData:data[i].fenbu.toString(),
+
+
+            });
+
+
+        }
+    }
+    return res;
+};
+
+option = {
+
+    title: {
+        text: '全国松毛虫分布图',
+        left: 'center',
+        textStyle:{
+            fontSize:25,
+            color:'black',
+            fontWeight:'bolder',
+            fontFamily:'monospace'
+        }
+    },
+    tooltip : {
+        trigger: 'item',
+        position: 'top',
+        confine:true ,
+		formatter(params) {
+
+//		console.log();
+		return  "<div class='toolDiv'>"+"城市:"+ params.name +'<br>'+"数量:"+params.value[2]+"<br>分布情况:"+params.data.fenBuData+"</div>"
+
+
+},
+        textStyle:{
+		    fontFamily:'HeiTi',
+		    fontSize:12
+        },
+        trigger: 'item'
+    },
+    bmap: {
+        center: [104.114129, 29.550339],
+        zoom: 5,
+        roam: false,
+        mapStyle: {
+            styleJson: [{
+                'featureType': 'water',
+                'elementType': 'all',
+                'stylers': {
+                    'color': '#d1d1d1'
+                }
+            }, {
+                'featureType': 'land',
+                'elementType': 'all',
+                'stylers': {
+                    'color': '#f3f3f3'
+                }
+            }, {
+                'featureType': 'railway',
+                'elementType': 'all',
+                'stylers': {
+                    'visibility': 'off'
+                }
+            }, {
+                'featureType': 'highway',
+                'elementType': 'all',
+                'stylers': {
+                    'color': '#fdfdfd'
+                }
+            }, {
+                'featureType': 'highway',
+                'elementType': 'labels',
+                'stylers': {
+                    'visibility': 'off'
+                }
+            }, {
+                'featureType': 'arterial',
+                'elementType': 'geometry',
+                'stylers': {
+                    'color': '#fefefe'
+                }
+            }, {
+                'featureType': 'arterial',
+                'elementType': 'geometry.fill',
+                'stylers': {
+                    'color': '#fefefe'
+                }
+            }, {
+                'featureType': 'poi',
+                'elementType': 'all',
+                'stylers': {
+                    'visibility': 'off'
+                }
+            }, {
+                'featureType': 'green',
+                'elementType': 'all',
+                'stylers': {
+                    'visibility': 'off'
+                }
+            }, {
+                'featureType': 'subway',
+                'elementType': 'all',
+                'stylers': {
+                    'visibility': 'off'
+                }
+            }, {
+                'featureType': 'manmade',
+                'elementType': 'all',
+                'stylers': {
+                    'color': '#d1d1d1'
+                }
+            }, {
+                'featureType': 'local',
+                'elementType': 'all',
+                'stylers': {
+                    'color': '#d1d1d1'
+                }
+            }, {
+                'featureType': 'arterial',
+                'elementType': 'labels',
+                'stylers': {
+                    'visibility': 'off'
+                }
+            }, {
+                'featureType': 'boundary',
+                'elementType': 'all',
+                'stylers': {
+                    'color': '#fefefe'
+                }
+            }, {
+                'featureType': 'building',
+                'elementType': 'all',
+                'stylers': {
+                    'color': '#d1d1d1'
+                }
+            }, {
+                'featureType': 'label',
+                'elementType': 'labels.text.fill',
+                'stylers': {
+                    'color': '#999999'
+                }
+            }]
+        }
+    },
+   series : [
+        {
+            name: 'chongfenbu',
+            type: 'scatter',
+            coordinateSystem: 'bmap',
+            data: convertData(data),
+            symbolSize: function (val) {
+                return val[2] / 0.2;
+            },
+            label: {
+                formatter: '{b}',
+                position: 'right',
+                show: false
+            },
+            itemStyle: {
+                color: 'purple'
+            },
+            emphasis: {
+                label: {
+                    show: true
+                }
+            }
+        },
+         {
+            name: 'Top 5',
+            type: 'effectScatter',
+            coordinateSystem: 'bmap',
+            data: convertData(data.sort(function (a, b) {
+                return b.value - a.value;
+            }).slice(0, 6)),
+            symbolSize: function (val) {
+                return val[2] / 0.2;
+            },
+            showEffectOn: 'render',
+            rippleEffect: {
+                brushType: 'stroke'
+            },
+            hoverAnimation: true,
+            label: {
+                formatter: '{b}',
+                position: 'right',
+                show: true
+            },
+            itemStyle: {
+                color: 'purple',
+                shadowBlur: 10,
+                shadowColor: '#333'
+            },
+            zlevel: 1
+        }
+    ]
+};
+
+myChart.setOption(option, true);
+
+</script>
+            </div>
+
+        </section>
+ <section id="about-us" class="white">
+        	<div class="container">
+	            <div class="row">
+	                <div class="col-md-12">
+	                    <div class="center gap fade-down section-heading">
+	                        <h2 class="main-title">Brief Introduction</h2>
+	                        <hr>
+	                        <p>Of an or game gate west face shed. ﻿no great but music too old found arose.</p>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="row">
+	                <div class="col-md-10 col-md-offset-1 fade-up">
+	                    <p>&nbsp;&nbsp;&nbsp;&nbsp;Simao Pine Caterpillars, also known as brown pine caterpillars, belong to the genus Dendrolimus of Lepidoptera. They were first found in Simao, Yunnan Province, and named China. They are mainly distributed in Yunnan, Guizhou, Sichuan, Guangdong, Guangxi, Hubei, Hunan, Jiangsu, Zhejiang, Anhui, Jiangxi, Fujian, Taiwan, Hainan and other provinces. Simao Pine Caterpillars mainly feed on Simao Pine, Yunnan pine, Huashan pine and other pine plants, and in the cloud Simao Pine is mainly damaged in the South Simao Area, but in the surrounding area of Kunming, it is mainly damaged by Dianya. Simao Pine Caterpillars are one of the six kinds of pine caterpillars that are most seriously damaged. When it is serious, it will make a large number of pine plants wither and die, like a fire, which will seriously affect the ecological environment and tourism in the relevant areas, and bring great inconvenience to the local people's production and life. Due to different geographical locations, Simao Pine Caterpillars in China The distribution in the south is special. Therefore, there are few studies on Dendrolimus punctatus abroad, and the domestic research results are quite fruitful. The observation of the morphological characteristics and living habits of Dendrolimus punctatus in each life stage provides a theoretical basis for the control of Dendrolimus punctatus.</p>
+
+	                </div>
+	                <div class="col-md-4 fade-up">
+
+	                </div>
+	            </div>
+
+
+
+            </div>
+        </section>
+
+        <section id="portfolio" class="white">
+       		<div class="container">
+		        	<div class="center gap fade-down section-heading">
+		                <h2 class="main-title">Examples Of Pine caterpillar</h2>
+		                <hr>
+		                <p>关于研究中松毛虫的图片个例.</p>
+		            </div>
+
+
+                    <ul class="portfolio-items col-3 isotope fade-up">
+                        <li class="portfolio-item joomla nature isotope-item">
+                            <div class="item-inner">
+                                <img src="{{url_for('static',filename='img/chong01.jpg')}}" alt="">
+                                <div class="overlay">
+                                    <a href="#"></a>
+                                </div>
+                            </div>
+                        </li><!--/.portfolio-item-->
+                        <li class="portfolio-item bootstrap design isotope-item">
+                            <div class="item-inner">
+                                <img src="{{url_for('static',filename='img/chong02.jpg')}}" alt="">
+                                <div class="overlay">
+                                    <a href="#"></a>
+                                </div>
+                            </div>
+                        </li><!--/.portfolio-item-->
+                        <li class="portfolio-item joomla design apps isotope-item">
+                            <div class="item-inner">
+                                <img src="{{url_for('static',filename='img/chong03.jpg')}}" alt="">
+                                <div class="overlay">
+                                    <a href="#"></a>
+                                </div>
+                            </div>
+                        </li><!--/.portfolio-item-->
+                        <li class="portfolio-item joomla apps isotope-item">
+                            <div class="item-inner">
+                                <img src="{{url_for('static',filename='img/chong04.jpg')}}" alt="">
+                                <div class="overlay">
+                                    <a href="#"></a>
+                                </div>
+                            </div>
+                        </li><!--/.portfolio-item-->
+                        <li class="portfolio-item wordpress nature isotope-item">
+                            <div class="item-inner">
+                                <img src="{{url_for('static',filename='img/chong05.png')}}" alt="">
+                                <div class="overlay">
+                                    <a href="#"></a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="portfolio-item wordpress nature isotope-item">
+                            <div class="item-inner">
+                                <img src="{{url_for('static',filename='img/chong06.jpg')}}" alt="">
+                                <div class="overlay">
+                                    <a href="#"></a>
+                                </div>
+                            </div>
+                        </li>
+                        </ul>
+                </div>
+            </section>
+        </div>
+
+    <div id="footer-wrapper">
+
+       <footer id="footer" class="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8">
+                         Analysis and display of intestinal microorganism of Dendrolimus&nbsp;&nbsp;<a href="{{ url_for('Computer.index') }}" target="_blank" >松毛虫肠道微生物</a>
+                    </div>
+                    <div class="col-sm-4">
+                        <ul class="pull-right">
+                            <li><a id="gototop" class="gototop" href="#"><i class="fa fa-chevron-up"></i></a></li><!--#gototop-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer><!---/#footer-->
+    </div>
+
+
+ <script src="{{url_for('static',filename='js_pc/plugins.js')}}"></script>
+    <script src="{{url_for('static',filename='js_pc/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js_pc/jquery.prettyPhoto.js')}}"></script>
+    <script src="{{url_for('static',filename='js_pc/init.js')}}"></script>
+
+</body>
+</html>

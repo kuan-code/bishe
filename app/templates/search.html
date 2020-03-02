@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>DKIMDB</title>
+    <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts.js"></script>
+        <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.bootcss.com/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <link href="{{url_for('static',filename='css_pc/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='css_pc/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='css_pc/pe-icons.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='css_pc/prettyPhoto.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='css_pc/animate.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='css_pc/style.css')}}" rel="stylesheet">
+    <script src="{{url_for('static',filename='js_pc/jquery.js')}}"></script>
+    <!--[if lt IE 9]>
+    <script src="{{url_for('static',filename='js_pc/html5shiv.js')}}"></script>
+    <script src="{{url_for('static',filename='js_pc/respond.min.js')}}"></script>
+
+
+    <![endif]-->
+
+
+    <link rel="shortcut icon" href="{{url_for('static',filename='img_pc/ico/favicon.ico')}}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{url_for('static',filename='img_pc/ico/apple-touch-icon-144x144.png')}}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{url_for('static',filename='img_pc/ico/apple-touch-icon-114x114.png')}}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{url_for('static',filename='img_pc/ico/apple-touch-icon-72x72.png')}}">
+    <link rel="apple-touch-icon" href="{{url_for('static',filename='img_pc/ico/apple-touch-icon-57x57.png')}}">
+
+    <script type="text/javascript">
+    jQuery(document).ready(function($){
+    'use strict';
+        jQuery('body').backstretch([
+            "http://placehold.it/800x600",
+            "http://placehold.it/800x600",
+            "http://placehold.it/800x600"
+        ], {duration: 5000, fade: 500});
+
+
+    });
+    </script>
+</head><!--/head-->
+<body>
+<div id="preloader"></div>
+    <header class="navbar navbar-inverse navbar-fixed-top opaqued" role="banner">
+    <div id="search-wrapper">
+        <div class="container">
+            <input id="search-box" placeholder="Search">
+        </div>
+    </div>
+    </div>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="{{ url_for('Computer.index') }}"><h1>
+                    <img  style="float: left;margin-top: -8px;;width: 50px;height: 46px" src="{{ url_for('static',filename='img/虫子图标.png') }}" alt="">
+                    DKIMDB</h1></a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li> <a class="page-scroll" href="{{ url_for('Computer.index') }}">Home</a> </li>
+          <li> <a class="page-scroll" href="{{ url_for('Computer.search') }}">SEARCH</a> </li>
+          <li> <a class="page-scroll" href="{{ url_for('Computer.statistics') }}">STATISTICS</a> </li>
+          <li> <a class="page-scroll" href="{{ url_for('Computer.download') }}">DOWNLOAD</a> </li>
+          <li> <a class="page-scroll" href="#testimonials">PUBLICATIONS</a> </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </header><!--/header-->
+
+    <section id="single-page-slider" class="no-margin">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="center gap fade-down section-heading">
+                                    <h2 class="main-title">SEARCH</h2>
+                                    <hr>
+                                    <p>Display of species number, content, name and tree map of each insect age.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+    </section><!--/#main-slider-->
+
+    <div id="content-wrapper">
+        <section id="about-us" class="white">
+           <div>
+<ul class="box" id="uli">
+ <li  value="1" style="width: 70px;margin-left: 40px" ><img id="c1" src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 61px" width="30" height="30" alt="" /></li>
+ <li  value="2" style="width: 80px"><img id="c2" src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 53px" width="38" height="38" alt="" /></li>
+ <li  value="3" style="width: 90px"><img id="c3" src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 46px" width="45" height="45" alt="" /></li>
+ <li  value="4" style="width: 100px"><img id="c4" src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 36px" width="55" height="55" alt="" /></li>
+ <li  value="5" style="width: 110px"><img id="c5" src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 26px" width="65" height="65" alt="" /></li>
+ <li  value="6" style="width: 120px"><img id="c6" src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 16px" width="75" height="75" alt="" /></li>
+ <li  value="7" style="width: 130px"><img id="c7" src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 5px" width="86" height="86" alt="" /></li>
+ <li><h4 style="color: rgb(36,33,28);font-family: '微软雅黑';font-size: 22px";>（单机图标查询，从左到右依次为1-7龄松毛虫）</h4> </li>
+</ul>
+    </div>
+            <div class="list_worm">
+    <table style="font-family:'微软雅黑';font-size: 14px;width: 100%" id="tb" class="table">
+
+    </table>
+</div>
+<hr style="width: 100%;
+    height: 1.1px;
+    background: #a56d6d" />
+            <div id="search_tree" style="width: 100%;margin-left: 5px; height: 800px">
+            </div>
+        </section>
+    </div>
+
+    <div id="footer-wrapper">
+
+        <footer id="footer" class="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8">
+                         Analysis and display of intestinal microorganism of Dendrolimus&nbsp;&nbsp;<a href="{{ url_for('Computer.index') }}" target="_blank" >松毛虫肠道微生物</a>
+                    </div>
+                    <div class="col-sm-4">
+                        <ul class="pull-right">
+                            <li><a id="gototop" class="gototop" href="#"><i class="fa fa-chevron-up"></i></a></li><!--#gototop-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer><!--/#footer-->
+    </div>
+
+ <script src="{{url_for('static',filename='js_pc/plugins.js')}}"></script>
+    <script src="{{url_for('static',filename='js_pc/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js_pc/jquery.prettyPhoto.js')}}"></script>
+    <script src="{{url_for('static',filename='js_pc/init.js')}}"></script>
+
+</body>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/Search.css') }}">
+
+<script type="text/javascript" src="{{ url_for('static',filename='js/search.js') }}"></script>
+</html>
+

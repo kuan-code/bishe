@@ -1,0 +1,62 @@
+
+<div class="st_left">
+    <div>
+<ul class="box" id="uli">
+ <li id="c1" value="1" style="width: 70px" ><img src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 61px" width="30" height="30" alt="" /></li>
+ <li id="c2" value="2" style="width: 75px"><img src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 53px" width="38" height="38" alt="" /></li>
+ <li id="c3" value="3" style="width: 80px"><img src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 46px" width="45" height="45" alt="" /></li>
+ <li id="c4" value="4" style="width: 90px"><img src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 36px" width="55" height="55" alt="" /></li>
+ <li id="c5" value="5" style="width: 100px"><img src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 26px" width="65" height="65" alt="" /></li>
+ <li id="c6" value="6" style="width: 110px"><img src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 16px" width="75" height="75" alt="" /></li>
+ <li id="c7" value="7" style="width: 120px"><img src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 5px" width="86" height="86" alt="" /></li>
+</ul>
+    </div>
+    <div>
+        <span>类型：</span>
+        <select style="font-size: large;width: 150px" class="form-control" id="select_type" onchange="getName()">
+            <option value ="Phylum" selected>Phylum</option>
+            <option value ="Class">Class</option>
+            <option value ="Order_">Order</option>
+            <option value ="Family">Family</option>
+            <option value ="Genus">Genus</option>
+            <option value ="Species">Species</option>
+        </select>
+        <span>名称：</span>
+        <input style="position: relative" class="form-control" id="select_name" type="text" placeholder="p__Proteobacteria">
+    </div>
+    <br/>
+    <div class="border" style=" height: 500px;" id="line_chart">
+
+    </div>
+
+</div>
+<div class="st_right">
+<ul>
+ <li style="float: left" ><img src="{{ url_for('static',filename='img/static_qzh/chong_rear.png') }}"  width="85" height="85" alt="" /></li>
+ <li style="float: left;margin-left: 60px"><img src="{{ url_for('static',filename='img/static_qzh/chong_mid.png') }}"  width="85" height="85" alt="" /></li>
+ <li style="margin-left: 290px"><img src="{{ url_for('static',filename='img/static_qzh/chong_front.png') }}"  width="85" height="85" alt="" /></li>
+</ul>
+    <div class="r_input">
+        <span>类型：</span>
+        <select style="font-size: large;width: 150px" class="custom-select" id="select_type_r" onchange="getName_R()">
+            <option value ="Phylum" selected>Phylum</option>
+            <option value ="Class">Class</option>
+            <option value ="Order_">Order</option>
+            <option value ="Family">Family</option>
+            <option value ="Genus">Genus</option>
+            <option value ="Species">Species</option>
+        </select>
+        <span>名称：</span>
+        <input style="position: relative" class="" id="select_name_r" type="text" placeholder="p__Proteobacteria">
+    </div>
+    <br>
+    <div id="wormYear" class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+  <button value="5" type="button" class="btn btn-secondary">5龄</button>
+  <button value="6" type="button" class="btn btn-secondary">6龄</button>
+  <button value="7" type="button" class="btn btn-secondary">7龄</button>
+
+    </div>
+    <div class="border" style=" margin-top: 10px;margin-left: -15px; height: 460px;" id="right_chart">
+
+    </div>
+</div>

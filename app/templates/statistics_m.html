@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    .ui-autocomplete {
+        font-size: 1rem;
+        max-height: 20rem;
+        overflow-y: auto;
+        /* prevent horizontal scrollbar */
+        overflow-x: hidden;
+        background-color: honeydew;
+    }
+    /* IE 6 doesn't support max-height
+     * we use height instead, but this forces the menu to always be this tall
+     */
+    * html .ui-autocomplete {
+        height: 20rem;
+    }
+    ul,li{ ;padding:0; margin:0; overflow:hidden;}
+li{ list-style:none;}
+img{ border:0;}
+.box{width:100%}
+.box li{ float:left}
+#wormYear button{
+    font-family: 微软雅黑;
+    font-size: smaller;
+}
+    </style>
+<title>松毛虫肠道微生物</title>
+<!-- for-mobile-apps -->
+<script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts.js"></script>
+<script src="https://cdn.bootcss.com/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+
+	<!-- css files -->
+    <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/css_slider.css') }}" rel="stylesheet"><!-- Slider css -->
+    <link href="{{ url_for('static',filename='css/bootstrap.css') }}" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+    <link href="{{ url_for('static',filename='css/style_m.css') }}" rel='stylesheet' type='text/css' /><!-- custom css -->
+    <link href="{{ url_for('static',filename='css/font-awesome.min.css') }}" rel="stylesheet"><!-- fontawesome css -->
+	<!-- //css files -->
+
+	<!-- google fonts -->
+	<link href="http://fonts.googleapis.com/css?family=Niramit:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext,thai,vietnamese" rel="stylesheet">
+	<!-- //google fonts -->
+
+</head>
+<body>
+
+
+<!-- header -->
+<header>
+	<div class="container">
+		<!-- nav -->
+		<nav class="py-3 d-lg-flex">
+			<div id="logo">
+				<h1> <a href="{{ url_for('Mobile.index_m') }}"><span><img style="width:30%;height: 30%" src="{{ url_for('static',filename='img/虫子图标.png') }}" alt=""></span> DKIMDB </a></h1>
+			</div>
+			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
+			<input type="checkbox" id="drop" />
+			<ul class="menu ml-auto mt-1">
+				<li class="active"><a href="{{ url_for('Mobile.index_m') }}">Home</a></li>
+				<li class=""><a href="{{ url_for('Mobile.search_m') }}">Search</a></li>
+				<li class=""><a href="{{ url_for('Mobile.statistics_m') }}">Statistics</a></li>
+			</ul>
+		</nav>
+		<!-- //nav -->
+	</div>
+</header>
+<!-- //header -->
+
+
+
+
+
+
+<!-- inner-banner -->
+<section class="inner-banner" id="home">
+	<div class="inner-layer">
+		<div class="container">
+		</div>
+	</div>
+</section>
+<!-- //inner-banner -->
+
+<div class="breadcrumb-w3pvt">
+	<div class="container">
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="index.html">Home</a>
+			</li>
+			<li class="breadcrumb-item" aria-current="page">STATISTICS</li>
+		</ol>
+	</nav>
+	</div>
+</div>
+<!-- //breadcrumb -->
+
+<section class="bar_chart">
+	<img src="{{url_for('static',filename='img/m_chong7.png')}}" alt="">
+	<hr class="simple" color="#6f5499" />
+    <div>
+        <label class="col-sm-2 control-label">类型：</label>
+        <select style="width: 60%" class="form-control" id="select_type" onchange="getName()">
+            <option value ="Phylum" selected>Phylum</option>
+            <option value ="Class">Class</option>
+            <option value ="Order_">Order</option>
+            <option value ="Family">Family</option>
+            <option value ="Genus">Genus</option>
+            <option value ="Species">Species</option>
+        </select>
+        <label class="col-sm-2 control-label">名称：</label>
+        <input style="width: 80%" class="form-control" id="select_name" type="text" placeholder="p__Proteobacteria">
+    </div>
+    <hr class="simple" color="#6f5499" />
+    <div class="border" style="height: 25rem;" id="line_chart"></div>
+</section>
+<hr class="simple" style="height: 0.2rem" color="#6f5499" />
+<section class="radar_chart">
+	<div class="st_right">
+    <div class="r_input">
+		<img src="{{url_for('static',filename='img/m_chong3.png')}}" alt="">
+        <label class="col-sm-2 control-label">类型：</label>
+        <select style="width: 60%" class="form-control" id="select_type_r" onchange="getName_R()">
+            <option value ="Phylum" selected>Phylum</option>
+            <option value ="Class">Class</option>
+            <option value ="Order_">Order</option>
+            <option value ="Family">Family</option>
+            <option value ="Genus">Genus</option>
+            <option value ="Species">Species</option>
+        </select>
+        <label class="col-sm-2 control-label">名称：</label>
+        <input style="width: 80%" class="form-control" id="select_name_r" type="text" placeholder="p__Proteobacteria">
+    </div>
+    <br>
+    <div id="wormYear" class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+  <button value="5" type="button" class="btn btn-secondary">5龄</button>
+  <button value="6" type="button" class="btn btn-secondary">6龄</button>
+  <button value="7" type="button" class="btn btn-secondary">7龄</button>
+
+    </div>
+	<hr class="simple" color="#6f5499" />
+    <div class="border" style="height: 22rem" id="right_chart">
+
+    </div>
+</div>
+</section>
+<!-- move top -->
+<div class="move-top text-right">
+	<a href="#home" class="move-top">
+		<span class="fa fa-angle-up  mb-3" aria-hidden="true"></span>
+	</a>
+</div>
+<!-- move top -->
+
+
+</body>
+<script src="{{url_for('static',filename='js/statistics_m.js')}}"></script>
+</html>

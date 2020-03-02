@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>松毛虫肠道微生物</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+	
+	<!-- css files -->
+    <link href="{{ url_for('static',filename='css/css_slider.css') }}" rel="stylesheet"><!-- Slider css -->
+    <link href="{{ url_for('static',filename='css/bootstrap.css') }}" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+    <link href="{{ url_for('static',filename='css/style_m.css') }}" rel='stylesheet' type='text/css' /><!-- custom css -->
+    <link href="{{ url_for('static',filename='css/font-awesome.min.css') }}" rel="stylesheet"><!-- fontawesome css -->
+	<!-- //css files -->
+
+	<!-- google fonts -->
+	<link href="http://fonts.googleapis.com/css?family=Niramit:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext,thai,vietnamese" rel="stylesheet">
+	<!-- //google fonts -->
+	
+</head>
+<body>
+
+
+<!-- header -->
+<header>
+	<div class="container">
+		<!-- nav -->
+		<nav class="py-3 d-lg-flex">
+			<div id="logo">
+				<h1> <a href="{{ url_for('Mobile.index_m') }}"><span><img style="width:30%;height: 30%" src="{{ url_for('static',filename='img/虫子图标.png') }}" alt=""></span> DKIMDB </a></h1>
+			</div>
+			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
+			<input type="checkbox" id="drop" />
+			<ul class="menu ml-auto mt-1">
+				<li class="active"><a href="{{ url_for('Mobile.index_m') }}">Home</a></li>
+				<li class=""><a href="{{ url_for('Mobile.search_m') }}">Search</a></li>
+				<li class=""><a href="{{ url_for('Mobile.statistics_m') }}">Statistics</a></li>
+			</ul>
+		</nav>
+		<!-- //nav -->
+	</div>
+</header>
+<!-- //header -->
+
+
+<!-- banner -->
+<div class="banner" id="home">
+	<div class="layer">
+		<div class="container">
+			<div class="banner-text-w3pvt">
+				<!-- banner slider-->
+				<div class="csslider infinity" id="slider1">
+					<input type="radio" name="slides" checked="checked" id="slides_1" />
+					<input type="radio" name="slides" id="slides_2" />
+					<input type="radio" name="slides" id="slides_3" />
+					<ul class="banner_slide_bg">
+						<li>
+							<div class="w3ls_banner_txt">
+								<h2 class="b-w3ltxt text-capitalize mt-md-4">Nematode<span> Germ .</span> </h2>
+								<h4 class="b-w3ltxt text-capitalize">Brief Introduction</h4>
+								<img style="margin-top: 20px; width: 50%; float: right" src="{{ url_for('static',filename='img/chong03.jpg') }}" alt="">
+								<p class="w3ls_pvt-title my-3">&nbsp&nbsp Simao Pine Caterpillars, also known as brown pine caterpillars, belong to the genus Dendrolimus of Lepidoptera. They were first found in Simao, Yunnan Province, and named China. They are mainly distributed in Yunnan, Guizhou, Sichuan, Guangdong, Guangxi, Hubei, Hunan, Jiangsu, Zhejiang, Anhui, Jiangxi, Fujian, Taiwan, Hainan and other provinces. Simao Pine Caterpillars mainly feed on Simao Pine, Yunnan pine, Huashan pine and other pine plants, and in the cloud Simao Pine is mainly damaged in the South Simao Area, but in the surrounding area of Kunming, it is mainly damaged by Dianya. Simao Pine Caterpillars are one of the six kinds of pine caterpillars that are most seriously damaged. When it is serious, it will make a large number of pine plants wither and die, like a fire, which will seriously affect the ecological environment and tourism in the relevant areas, and bring great inconvenience to the local people's production and life. Due to different geographical locations, Simao Pine Caterpillars in China The distribution in the south is special. Therefore, there are few studies on Dendrolimus punctatus abroad, and the domestic research results are quite fruitful. The observation of the morphological characteristics and living habits of Dendrolimus punctatus in each life stage provides a theoretical basis for the control of Dendrolimus punctatus</p>
+								<a href="{{url_for('Mobile.search_m')}}" class="btn btn-banner my-3 mr-2">Read More</a>
+							</div>
+						</li>
+
+					</ul>
+
+				</div>
+				<!-- //banner slider-->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //banner -->
+
+
+
+<!-- move top -->
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .ui-autocomplete {
+        font-size: 1rem;
+        max-height: 20rem;
+        overflow-y: auto;
+        /* prevent horizontal scrollbar */
+        overflow-x: hidden;
+        background-color: honeydew;
+    }
+    /* IE 6 doesn't support max-height
+     * we use height instead, but this forces the menu to always be this tall
+     */
+    * html .ui-autocomplete {
+        height: 20rem;
+    }
+    ul li{
+    list-style-type: none;
+}
+.box{width:100%}
+.box li{ float:left;}
+.box li h4{
+    font-family: 微软雅黑;
+    font-size: 15px;
+    margin: 30px;
+}
+</style>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+    <title>DKIMDB</title>
+        <link href="{{ url_for('static',filename='css/bootstrap.css') }}" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+    <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts.js"></script>
+        <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.bootcss.com/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <link href="{{url_for('static',filename='css_pc/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='css_pc/pe-icons.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='css_pc/prettyPhoto.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='css_pc/animate.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='css_pc/style.css')}}" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="{{url_for('static',filename='js_pc/html5shiv.js')}}"></script>
+    <script src="{{url_for('static',filename='js_pc/respond.min.js')}}"></script>
+
+
+    <![endif]-->
+
+
+    <link rel="shortcut icon" href="{{url_for('static',filename='img_pc/ico/favicon.ico')}}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{url_for('static',filename='img_pc/ico/apple-touch-icon-144x144.png')}}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{url_for('static',filename='img_pc/ico/apple-touch-icon-114x114.png')}}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{url_for('static',filename='img_pc/ico/apple-touch-icon-72x72.png')}}">
+    <link rel="apple-touch-icon" href="{{url_for('static',filename='img_pc/ico/apple-touch-icon-57x57.png')}}">
+
+    <script type="text/javascript">
+    jQuery(document).ready(function($){
+    'use strict';
+        jQuery('body').backstretch([
+            "http://placehold.it/800x600",
+            "http://placehold.it/800x600",
+            "http://placehold.it/800x600"
+        ], {duration: 5000, fade: 500});
+
+
+    });
+    </script>
+</head><!--/head-->
+<body>
+<div id="preloader"></div>
+    <header class="navbar navbar-inverse navbar-fixed-top opaqued" role="banner">
+    <div id="search-wrapper">
+        <div class="container">
+            <input id="search-box" placeholder="Search">
+        </div>
+    </div>
+    </div>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="{{ url_for('Computer.index') }}"><h1>
+                    <img  style="float: left;margin-top: -8px;;width: 50px;height: 46px" src="{{ url_for('static',filename='img/虫子图标.png') }}" alt="">
+                    DKIMDB</h1></a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li> <a class="page-scroll" href="{{ url_for('Computer.index') }}">Home</a> </li>
+          <li> <a class="page-scroll" href="{{ url_for('Computer.search') }}">SEARCH</a> </li>
+          <li> <a class="page-scroll" href="{{ url_for('Computer.statistics') }}">STATISTICS</a> </li>
+          <li> <a class="page-scroll" href="{{ url_for('Computer.download') }}">DOWNLOAD</a> </li>
+          <li> <a class="page-scroll" href="#testimonials">PUBLICATIONS</a> </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </header><!--/header-->
+
+    <section id="single-page-slider" class="no-margin">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="center gap fade-down section-heading">
+                                    <h2 class="main-title">STATISTICS</h2>
+                                    <hr>
+                                    <p>Statistics of different microbial contents in different body parts and insect ages at different stages.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+    </section><!--/#main-slider-->
+
+    <div id="content-wrapper">
+        <section id="about-us" class="white">
+            <div style="width: 50%;float: left" class="l_left">
+    	 <div style="height: 100px;width: 100%">
+<ul class="box" id="uli">
+ <li id="c1" value="1" style="width: 50px" ><img src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 56px" width="30" height="30" alt="" /></li>
+ <li id="c2" value="2" style="width: 75px"><img src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 48px" width="38" height="38" alt="" /></li>
+ <li id="c3" value="3" style="width: 80px"><img src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 41px" width="45" height="45" alt="" /></li>
+ <li id="c4" value="4" style="width: 90px"><img src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 31px" width="55" height="55" alt="" /></li>
+ <li id="c5" value="5" style="width: 100px"><img src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 21px" width="65" height="65" alt="" /></li>
+ <li id="c6" value="6" style="width: 100px"><img src="{{ url_for('static',filename='img/chongzi.png') }}" style="margin-top: 11px" width="75" height="75" alt="" /></li>
+ <li id="c7" value="7" style="width: 100px"><img src="{{ url_for('static',filename='img/chongzi.png') }}" style="" width="86" height="86" alt="" /></li>
+</ul>
+    </div>
+
+        <div>
+        <span>类型：</span>
+        <select style="font-size: large;width: 150px" class="form-control" id="select_type" onchange="getName()">
+            <option value ="Phylum" selected>Phylum</option>
+            <option value ="Class">Class</option>
+            <option value ="Order_">Order</option>
+            <option value ="Family">Family</option>
+            <option value ="Genus">Genus</option>
+            <option value ="Species">Species</option>
+        </select>
+        <span>名称：</span>
+        <input style="font-size: 16px; position: relative" class="form-control" id="select_name" type="text" placeholder="p__Proteobacteria">
+    </div>
+                <br>
+                <div class="border" style=" height: 500px;" id="line_chart">
+
+    </div>
+</div>
+            <div class="st_right">
+<ul>
+ <li style="float: left" ><img src="{{ url_for('static',filename='img/static_qzh/chong_rear.png') }}"  width="85" height="85" alt="" /></li>
+ <li style="float: left;margin-left: 60px"><img src="{{ url_for('static',filename='img/static_qzh/chong_mid.png') }}"  width="85" height="85" alt="" /></li>
+ <li style="margin-left: 290px"><img src="{{ url_for('static',filename='img/static_qzh/chong_front.png') }}"  width="85" height="85" alt="" /></li>
+</ul>
+    <div class="r_input">
+        <span>类型：</span>
+        <select style="font-size: large;width: 150px" class="form-control" id="select_type_r" onchange="getName_R()">
+            <option value ="Phylum" selected>Phylum</option>
+            <option value ="Class">Class</option>
+            <option value ="Order_">Order</option>
+            <option value ="Family">Family</option>
+            <option value ="Genus">Genus</option>
+            <option value ="Species">Species</option>
+        </select>
+        <span>名称：</span>
+        <input style="position: relative" class="form-control" id="select_name_r" type="text" placeholder="p__Proteobacteria">
+    </div>
+    <br>
+    <div id="wormYear" class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+  <button value="5" type="button" class="btn btn-secondary">5龄</button>
+  <button value="6" type="button" class="btn btn-secondary">6龄</button>
+  <button value="7" type="button" class="btn btn-secondary">7龄</button>
+
+    </div>
+    <div class="border" style=" margin-top: 20px;margin-left: -15px; height: 460px;" id="right_chart">
+
+    </div>
+</div>
+<div id="search_tree" style="width: 100%;margin-left: 5px; height: 800px">
+            </div>
+
+        </section>
+    </div>
+
+    <div id="footer-wrapper">
+
+        <footer id="footer" class="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8">
+                         Analysis and display of intestinal microorganism of Dendrolimus&nbsp;&nbsp;<a href="{{ url_for('Computer.index') }}" target="_blank" >松毛虫肠道微生物</a>
+                    </div>
+                    <div class="col-sm-4">
+                        <ul class="pull-right">
+                            <li><a id="gototop" class="gototop" href="#"><i class="fa fa-chevron-up"></i></a></li><!--#gototop-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer><!--/#footer-->
+    </div>
+
+ <script src="{{url_for('static',filename='js_pc/plugins.js')}}"></script>
+    <script src="{{url_for('static',filename='js_pc/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js_pc/jquery.prettyPhoto.js')}}"></script>
+    <script src="{{url_for('static',filename='js_pc/init.js')}}"></script>
+</body>
+
+<script type="text/javascript" src="{{ url_for('static',filename='js/statistics.js') }}"></script>
+</html>
+
